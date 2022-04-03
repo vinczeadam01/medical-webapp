@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class="background">
+    <div class="container">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Bejelentkezés</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="card-content">
+                    <!--Choose patient or doctor-->
+                    <div class="radio-div">
+                        <mat-radio-group aria-label="Válasszon egy lehetőséget!">
+                            <mat-radio-button value="patient" checked="checked"><img src="/assets/images/patient.png" alt="Bejelentkezés betegként!" title="Bejelentkezés betegként!">
+                            </mat-radio-button>
+                            <mat-radio-button value="doctor"><img src="/assets/images/doctor.png" alt="Bejelentkezés orvosként!" title="Bejelentkezés orvosként!">
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <!--Input fields-->
+                    <mat-form-field>
+                        <mat-label for="email">Email: </mat-label><input id="input-box" matInput type="text" [formControl]="email" />
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label for="password">Password: </mat-label><input matInput type="password"
+                            [formControl]="password" />
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <!--Buttons-->
+                <button mat-raised-button color="primary">Bejelentkezés</button>
+                <button mat-button>Regisztráció</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
