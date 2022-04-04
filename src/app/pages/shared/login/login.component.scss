@@ -1,5 +1,5 @@
 .background {
-    background-image: url("/assets/images/medical-background.jpg");
+    background-image: url("/assets/images/bg-2.jpg");
     background-size:cover;
     //background-color: blue;
     height: 100%;
@@ -15,6 +15,7 @@
 
 mat-card {
     align-self: center;
+    max-width: 500px;
     
 }
 
@@ -38,8 +39,33 @@ img {
 
 }
 
-.mat-radio-button {
-    display: inline-block;
-    margin-left: 20px;
+
+.switch-field {
+	display: flex;
+    justify-content: flex-end;
+    align-self: center;
+	margin-bottom: 36px;
 }
 
+.switch-field input {
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	width: 1px;
+	border: 0;
+	overflow: hidden;
+}
+
+.switch-field label {
+	padding: 5px 10px;
+	transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+}
+
+.switch-field label:hover {
+	cursor: pointer;
+}
+
+.switch-field input:checked + label {
+	background-color: #a5dc86;
+	border: black 10px;
+}
