@@ -9,8 +9,13 @@ import { Router } from '@angular/router';
 })
 export class DoctorComponent {
 
-  links = [{name: "Előzmények", icon: "table_rows", url: "/login"}];
-  page = '';
+  links = [
+    {name: "Eredmények", icon: "table_rows", url: "/doctor/table"},
+    {name: "Beteglista", icon: "person", url: "/doctor/patients"},
+    {name: "Beállítások", icon: "settings", url: "/settings"},
+    {name: "Kilép", icon: "logout", url: "/login"},
+  ];
+  page = "/doctor/patients";
 
   onToggleSidenav(sidenav: MatSidenav) {
     sidenav.toggle();
@@ -22,7 +27,7 @@ export class DoctorComponent {
     }
   }
   constructor(private router: Router) {
-    // parameter adattagok
+    this.page = this.router.url;
   }
 
   changePage(selectedPage: string) {
