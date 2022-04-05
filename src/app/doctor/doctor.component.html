@@ -1,2 +1,23 @@
 <p>doctor works!</p>
 <app-menu [links]="links"></app-menu>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+        <app-menu [links]="links"></app-menu>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <div>GALLERY-APP</div>
+            <div>
+                <ul class="navigation-items">
+                    <li><a routerLink="/login">Login</a></li>
+                    <li><a routerLink="/signup">Register</a></li>
+                    <li><a routerLink="/main">Main</a></li>
+                    <li><a routerLink="/gallery">Gallery</a></li>
+                    <li><a routerLink="/contact">Contact</a></li>
+                </ul>
+            </div>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
