@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
+import {MatRippleModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatInputModule,
     MatCardModule,
     MatRadioModule,
-    MatIconModule
+    MatIconModule,
+    MatRippleModule
   ]
 })
 export class LoginModule { }

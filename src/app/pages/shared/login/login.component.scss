@@ -16,7 +16,8 @@
 mat-card {
     align-self: center;
     max-width: 500px;
-    
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 mat-card-header {
@@ -39,15 +40,15 @@ img {
 
 }
 
-
-.switch-field {
+//Login and signup styles
+.login-switch-field {
 	display: flex;
     justify-content: flex-end;
     align-self: center;
 	margin-bottom: 36px;
 }
 
-.switch-field input {
+.login-switch-field input {
 	clip: rect(0, 0, 0, 0);
 	height: 1px;
 	width: 1px;
@@ -55,17 +56,31 @@ img {
 	overflow: hidden;
 }
 
-.switch-field label {
+.login-switch-field label {
 	padding: 5px 10px;
-	transition: all 0.2s ease-in-out;
+	transition: all 0.3s ease-in-out;
     border-radius: 10px;
 }
 
-.switch-field label:hover {
+.login-switch-field label:hover {
 	cursor: pointer;
 }
 
-.switch-field input:checked + label {
-	background-color: #a5dc86;
+.login-switch-field input:checked + label {
+	background-color: #82efe6;
 	border: black 10px;
+}
+
+.prefix {
+    margin-right: 5px;
+}
+
+.logo-container {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+
+.logo-container img {
+    width: 80px;
 }

@@ -16,6 +16,8 @@
 mat-card {
     align-self: center;
     max-width: 500px;
+    margin-left: 20px;
+    margin-right: 20px;
     
 }
 
@@ -46,4 +48,14 @@ img {
     width: 70%;
     display: inline;
 
+}
+
+.logo-container {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+
+.logo-container img {
+    width: 80px;
 }
