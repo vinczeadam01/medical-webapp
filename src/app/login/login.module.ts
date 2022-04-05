@@ -13,6 +13,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
 import {MatRippleModule} from '@angular/material/core';
 
+
 @NgModule({
   declarations: [
     LoginComponent
@@ -27,7 +28,7 @@ import {MatRippleModule} from '@angular/material/core';
     MatCardModule,
     MatRadioModule,
     MatIconModule,
-    MatRippleModule
+    MatRippleModule,
   ]
 })
 export class LoginModule { }
