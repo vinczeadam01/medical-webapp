@@ -7,7 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '../shared/shared.module';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     SharedModule,
     MatIconModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    FlexLayoutModule,
+    MatButtonModule
   ]
 })
 export class DoctorModule { }
