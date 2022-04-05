@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatCardModule} from '@angular/material/card';
 import { MenuComponent } from './shared/menu/menu.component';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MenuComponent } from './shared/menu/menu.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

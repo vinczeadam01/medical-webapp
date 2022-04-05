@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoctorComponent implements OnInit {
 
+  links = [{name: "Előzmények", icon: "table_rows", url: "/doctor/history"}]
+
   constructor() { }
 
   ngOnInit(): void {
