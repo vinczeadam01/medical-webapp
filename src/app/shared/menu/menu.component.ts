@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -8,12 +9,19 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MenuComponent implements OnInit {
 
   @Input() links = [{name: '', icon: '', url:''}];
+  @Input() currentPage: string = '';
+  @Output() selectedPage: EventEmitter<string> = new EventEmitter();
+  @Output() onCloseSidenav: EventEmitter<boolean> = new EventEmitter();
   
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-
+  switchPageAndClose(url: String) {
+    //console.log(url);
+    this.onCloseSidenav.emit(true);
+    this.router.navigateByUrl(url.toString());
+  }
 }

@@ -1,11 +1,11 @@
-<mat-sidenav-container>
-    <mat-sidenav #sidenav>
-        <app-menu [links]="links"></app-menu>
+<mat-sidenav-container >
+    <mat-sidenav #sidenav >
+        <app-menu [links]="links" (selectedPage)="changePage($event)" [currentPage]="page" (onCloseSidenav)="onClose($event, sidenav)"></app-menu>
     </mat-sidenav>
     <mat-sidenav-content>
         <mat-toolbar color="primary">
             <div fxHide.gt-xs>
-                <button mat-icon-button>
+                <button mat-icon-button (click)="onToggleSidenav(sidenav)" >
                   <mat-icon>menu</mat-icon>
                 </button>
               </div>
