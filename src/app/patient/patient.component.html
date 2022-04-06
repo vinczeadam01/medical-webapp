@@ -3,6 +3,7 @@
         <app-menu [links]="links" [currentPage]="page" (onCloseSidenav)="onClose($event, sidenav)"></app-menu>
     </mat-sidenav>
     <mat-sidenav-content>
+        <p>
         <mat-toolbar fxFlex fxLayout fxLayoutAlign="space-between center" color="primary">
             <!--MatSidenavToggleButton-->
             <div fxHide.gt-xs>
@@ -29,6 +30,7 @@
                 </button>
             </mat-menu>
         </mat-toolbar>
+        </p>
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
