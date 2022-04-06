@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 
@@ -12,8 +12,7 @@ export class DoctorComponent {
   links = [
     {name: "Eredmények", icon: "table_rows", url: "/doctor/table"},
     {name: "Beteglista", icon: "person", url: "/doctor/patients"},
-    {name: "Beállítások", icon: "settings", url: "/settings"},
-    {name: "Kilép", icon: "logout", url: "/login"},
+    {name: "Beállítások", icon: "settings", url: "/settings"}
   ];
   page = "/doctor/patients";
 
@@ -31,8 +30,11 @@ export class DoctorComponent {
   }
 
   changePage(selectedPage: string) {
-    // this.page = selectedPage;
     this.router.navigateByUrl(selectedPage);
+  }
+
+  logout() {
+    this.changePage("/login");
   }
 
 }
