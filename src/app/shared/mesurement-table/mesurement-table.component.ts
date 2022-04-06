@@ -9,9 +9,9 @@ import { BloodPressure } from '../models/bloodPressure';
 })
 export class MesurementTableComponent implements OnInit {
 
-  TABLE_DATA: BloodPressure[] = [{sys: 124, dia: 92, date: Date.now.toString(), feel: 5}];
+  TABLE_DATA: BloodPressure[] = [{sys: 124, dia: 92, date: "2022-04-06 12:00", feel: 5}];
 
-  displayedColumns: string[] = ['Dátum', 'SYS', 'DIA', 'Közérzet'];
+  displayedColumns: string[] = ['date', 'sys', 'dia', 'feel'];
   dataSource = new MatTableDataSource(this.TABLE_DATA);
 
   constructor() { }

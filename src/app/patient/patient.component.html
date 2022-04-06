@@ -4,33 +4,35 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <p>
-        <mat-toolbar fxFlex fxLayout fxLayoutAlign="space-between center" color="primary">
-            <!--MatSidenavToggleButton-->
-            <div fxHide.gt-xs>
-                <button mat-icon-button (click)="onToggleSidenav(sidenav)">
-                    <mat-icon>menu</mat-icon>
+            <mat-toolbar fxFlex fxLayout fxLayoutAlign="space-between center" color="primary">
+                <!--MatSidenavToggleButton-->
+                <div fxHide.gt-xs>
+                    <button mat-icon-button (click)="onToggleSidenav(sidenav)">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                </div>
+                <div>MEDICAL-APP</div>
+                <!--Menu bar-->
+                <div fxFlex fxLayout fxLayoutAlign="space-around" fxHide.xs>
+                    <ul fxLayout fxLayoutGap="30px" class="navigation-items">
+                        <li *ngFor="let link of links"><a [routerLink]="link.url"
+                                routerLinkActive="active">{{link.name}}</a></li>
+                    </ul>
+                </div>
+                <!--MatMenu-->
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
                 </button>
-            </div>
-            <div>MEDICAL-APP</div>
-            <!--Menu bar-->
-            <div fxFlex fxLayout fxLayoutAlign="space-around" fxHide.xs>
-                <ul fxLayout fxLayoutGap="30px" class="navigation-items">
-                    <li *ngFor="let link of links"><a [routerLink]="link.url"
-                            [class]="page==link.url?'active':''">{{link.name}}</a></li>
-                </ul>
-            </div>
-            <!--MatMenu-->
-            <button mat-icon-button [matMenuTriggerFor]="menu">
-                <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="logout()">
-                    <mat-icon>logout</mat-icon>
-                    <span>Kijelentkezés</span>
-                </button>
-            </mat-menu>
-        </mat-toolbar>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="logout()">
+                        <mat-icon>logout</mat-icon>
+                        <span>Kijelentkezés</span>
+                    </button>
+                </mat-menu>
+            </mat-toolbar>
         </p>
-        <router-outlet></router-outlet>
+        <div class="content-container">
+            <router-outlet></router-outlet>
+        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

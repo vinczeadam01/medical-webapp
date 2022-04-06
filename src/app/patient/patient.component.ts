@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class PatientComponent {
 
   links = [
-    {name: "Előzmények", icon: "table_rows", url: "/patient/table"},
+    {name: "Előzmények", icon: "table_rows", url: "/patient/history"},
     {name: "Mérés hozzáadása", icon: "add", url: "/patient/add"},
     {name: "Üzenet", icon: "email", url: "/patient/message"},
     {name: "Beállítások", icon: "settings", url: "/patient/settings"},
