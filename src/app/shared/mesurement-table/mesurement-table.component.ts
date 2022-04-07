@@ -26,9 +26,9 @@ export class MesurementTableComponent implements OnInit {
   }
 
 
-  openDialog(action: string, data: BloodPressure): void {
+  openDialog(actione: string, dataBloodPressure: BloodPressure): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      data: data
+      data: { data: dataBloodPressure, action: actione },
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -40,11 +40,13 @@ export class MesurementTableComponent implements OnInit {
 @Component({
   selector: 'dialog-content-example-dialog',
   templateUrl: 'dialog-content-example-dialog.html',
+  styles: ['mat-form-field {display: block; size: 80%; margin: 0 10px 0 10px}']
 })
 export class DialogOverviewExampleDialog {
+
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: BloodPressure,
+    @Inject(MAT_DIALOG_DATA) public data: { data: BloodPressure, action: string }
   ) {}
 
   onNoClick(): void {
