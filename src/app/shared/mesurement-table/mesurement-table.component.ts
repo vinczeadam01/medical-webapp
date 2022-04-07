@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { BloodPressure } from '../models/bloodPressure';
 
@@ -19,24 +20,34 @@ export class MesurementTableComponent implements OnInit {
   displayedColumns: string[] = ['date', 'sys', 'dia', 'feel', 'action'];
   dataSource = new MatTableDataSource(this.TABLE_DATA);
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
-  updateRowData(row_obj: BloodPressure){
-    this.TABLE_DATA = this.TABLE_DATA.filter((value,key)=>{
-      if(value.id == row_obj.id){
-        value.sys = row_obj.sys;
-        value.dia = row_obj.dia;
-        value.feel = row_obj.feel;
-      }
-      return true;
+
+  openDialog(action: string, data: BloodPressure): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
-  deleteRowData(row_obj: BloodPressure){
-    this.TABLE_DATA = this.TABLE_DATA.filter((value,key)=>{
-      return value.id != row_obj.id;
-    });
+}
+
+@Component({
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'dialog-content-example-dialog.html',
+})
+export class DialogOverviewExampleDialog {
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: BloodPressure,
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

@@ -33,11 +33,11 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>
+          <button mat-menu-item (click)="openDialog('update', element)">
             <mat-icon>delete</mat-icon>
             <span>Törlés</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="openDialog('update', element)">
             <mat-icon>update</mat-icon>
             <span>Módosítás</span>
           </button>
