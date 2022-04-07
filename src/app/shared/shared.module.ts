@@ -6,6 +6,8 @@ import { MesurementTableComponent } from './mesurement-table/mesurement-table.co
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -16,6 +18,8 @@ import {MatTableModule} from '@angular/material/table';
     MatListModule,
     MatIconModule,
     MatTableModule,
+    MatMenuModule,
+    MatDialogModule
   ],
   exports: [MenuComponent, MesurementTableComponent]
 })
