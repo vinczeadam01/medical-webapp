@@ -1,1 +1,38 @@
-<p>add works!</p>
+<div class="container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Új mérés hozzáadása</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div class="card-content">
+                <div class="form-block">
+                    <mat-form-field>
+                        <mat-label for="date">Dátum: </mat-label><input matInput type="date" [formControl]="date" />
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label for="time">Idő: </mat-label><input matInput type="time" [formControl]="time" />
+                    </mat-form-field>
+                </div>
+                <div class="form-block">
+                    <mat-form-field>
+                        <mat-label for="sys">SYS: </mat-label><input matInput type="number" [formControl]="sys" />
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label for="dia">DIA:</mat-label><input matInput type="number" [formControl]="dia" />
+                    </mat-form-field>
+                </div>
+                <mat-form-field>
+                    <mat-label for="feel">Hogy érzi magát?</mat-label><input matInput type="text" [formControl]="feel" />
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary">Mentés</button>
+        </mat-card-actions>
+    </mat-card>
+
+</div>

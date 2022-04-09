@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+}
+
+mat-card {
+    align-self: center;
+    width: 700px;
+    text-align: center;
+}
+
+mat-form-field {
+    display: inline-block;
+    width: 40vh;
+    margin: 0 20px 0 20px;
+}
+
+.form-block {
+    display: block;
+}
+
+mat-card-header {
+    flex-direction: column;
+}

@@ -13,6 +13,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import { HistoryComponent } from './pages/history/history.component';
 import { AddComponent } from './pages/add/add.component';
 import { MessageComponent } from './pages/message/message.component';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -31,7 +35,11 @@ import { MessageComponent } from './pages/message/message.component';
     MatSidenavModule,
     FlexLayoutModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ]
 })
 export class PatientModule { }
