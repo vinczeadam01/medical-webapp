@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: '', component: PatientComponent, children: [
     { path: 'history', component: HistoryComponent },
     { path: 'add', component: AddComponent },
-    { path: 'message', component: MessageComponent }
+    { path: 'message', component: MessageComponent },
+    { path: '', redirectTo: '/patient/history', pathMatch: 'full'},
   ] },
   
 

@@ -32,6 +32,7 @@
                 <button mat-raised-button color="primary" (click)="login()" >Bejelentkezés</button>
                 <button mat-button [routerLink]="'/signup'" >Regisztráció</button>
             </mat-card-actions>
+            <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
         </mat-card>
         <div class="logo-container"><img src="/assets/images/logo.png" alt="logo"></div>
     </div>

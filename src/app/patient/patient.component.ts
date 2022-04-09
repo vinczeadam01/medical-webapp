@@ -35,7 +35,7 @@ export class PatientComponent {
     this.router.navigateByUrl(selectedPage);
   }
 
-  onLogout() {
+  async onLogout() {
     this.authService.logout().then(() => {
       this.changePage("/login");
     }). catch(error => {

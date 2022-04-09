@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
 import {MatRippleModule} from '@angular/material/core';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {MatRippleModule} from '@angular/material/core';
     MatRadioModule,
     MatIconModule,
     MatRippleModule,
+    MatProgressBarModule
   ]
 })
 export class LoginModule { }

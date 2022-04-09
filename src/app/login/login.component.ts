@@ -21,16 +21,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login() {
+  async login() {
     this.loading = true;
     this.authService.login(this.email.value, this.password.value).then(cred => {
-      console.log(cred);
-      this.router.navigateByUrl('/patient');
+      //console.log(cred);
       this.loading = false;
+      this.router.navigateByUrl('/patient');
     }).catch(error => {
       console.error(error);
-      this.loading = false;
     });
   }
+
 
 }
