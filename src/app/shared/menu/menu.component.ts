@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,6 @@ export class MenuComponent implements OnInit {
 
   @Input() links = [{name: '', icon: '', url:''}];
   @Input() currentPage: string = '';
-  @Output() selectedPage: EventEmitter<string> = new EventEmitter();
   @Output() onCloseSidenav: EventEmitter<boolean> = new EventEmitter();
   
 
@@ -19,8 +18,10 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   switchPageAndClose(url: String) {
     //console.log(url);
+    this.currentPage = url.toString();
     this.onCloseSidenav.emit(true);
     this.router.navigateByUrl(url.toString());
   }
