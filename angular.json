@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "medical:build:production",
+            "firebaseProject": "medical-bc636",
+            "firebaseHostingSite": "medical-bc636"
+          }
         }
       }
     }

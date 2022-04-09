@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "medical-bc636": {
+      "hosting": {
+        "medical": [
+          "medical-bc636"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "medical-bc636"
+  }
+}
