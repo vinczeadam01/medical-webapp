@@ -18,6 +18,8 @@ export class SignupComponent implements OnInit {
   rePassword = new FormControl('');
 
   loading: boolean = false;
+  isPasswordsNotMatch = false;
+  emailIsAlreadyExists = false;
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -27,17 +29,22 @@ export class SignupComponent implements OnInit {
   onSignup() {
     this.loading = true;
     if(this.password.value === this.rePassword.value) {
+      this.isPasswordsNotMatch = false;
+      this.emailIsAlreadyExists = false;
       this.authService.signup(this.email.value, this.password.value).then(cred => {
         console.log(cred);
         this.router.navigateByUrl('/patient');
         this.loading = false;
       }).catch(error => {
-        console.error(error);
+        console.error(error.code);
+        if(error.code === "auth/email-already-in-use") {
+          this.emailIsAlreadyExists = true;
+        }
         this.loading = false;
       });
     }
     else {
-      //TODO: form error passwords not match
+      this.isPasswordsNotMatch = true;
     }
     
   }

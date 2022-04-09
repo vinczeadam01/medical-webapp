@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
 
@@ -10,9 +10,12 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  email = new FormControl('');
-  password = new FormControl('');
+  email = new FormControl('', [Validators.required]);
+  password = new FormControl('', [Validators.required]);
   radio = new FormControl('');
+
+  isInvalidEmailOrPassword = false;
+
 
   loading: boolean = false;
 
@@ -22,14 +25,19 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
-    this.loading = true;
-    this.authService.login(this.email.value, this.password.value).then(cred => {
-      //console.log(cred);
-      this.loading = false;
-      this.router.navigateByUrl('/patient');
-    }).catch(error => {
-      console.error(error);
-    });
+    if (!this.email.hasError("required") && !this.password.hasError("required")) {
+      this.isInvalidEmailOrPassword = false;
+      this.loading = true;
+      this.authService.login(this.email.value, this.password.value).then(cred => {
+        //console.log(cred);
+        this.loading = false;
+        this.router.navigateByUrl('/patient');
+      }).catch(error => {
+        console.error(error, this.email.hasError("required"), this.password.hasError("required"));
+        this.isInvalidEmailOrPassword = true;
+        this.loading = false;
+      });
+    }
   }
 
 

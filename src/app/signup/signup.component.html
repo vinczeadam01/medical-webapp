@@ -51,6 +51,8 @@
                     </mat-form-field>
                 </div>
             </mat-card-content>
+            <p class="signup-error-message" *ngIf="isPasswordsNotMatch">A jelszavak nem egyeznek!</p>
+            <p class="signup-error-message" *ngIf="emailIsAlreadyExists">Az email már foglalt!</p>
             <mat-card-actions>
                 <!--Buttons-->
                 <button mat-raised-button color="primary" (click)="onSignup()">Regisztráció</button>
