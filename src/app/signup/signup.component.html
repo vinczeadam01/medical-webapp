@@ -34,7 +34,7 @@
 
                     <mat-form-field>
                         <span matPrefix class="prefix"><mat-icon>badge</mat-icon></span>
-                        <mat-label for="taj">TAJ-szám: </mat-label><input matInput type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" placeholder="123-456-789"
+                        <mat-label for="taj">TAJ-szám: </mat-label><input matInput type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" placeholder="123-456-789"
                             [formControl]="taj" />
                     </mat-form-field>
 
@@ -46,14 +46,14 @@
 
                     <mat-form-field>
                         <span matPrefix class="prefix"><mat-icon>lock</mat-icon></span>
-                        <mat-label for="password">Jelszó újra: </mat-label><input matInput type="password"
-                            [formControl]="repassword" />
+                        <mat-label for="rePassword">Jelszó újra: </mat-label><input matInput type="password"
+                            [formControl]="rePassword" />
                     </mat-form-field>
                 </div>
             </mat-card-content>
             <mat-card-actions>
                 <!--Buttons-->
-                <button mat-raised-button color="primary">Regisztráció</button>
+                <button mat-raised-button color="primary" (click)="onSignup()">Regisztráció</button>
                 <button mat-button [routerLink]="'/login'" >Vissza</button>
             </mat-card-actions>
         </mat-card>

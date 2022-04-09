@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-patient',
@@ -26,7 +27,7 @@ export class PatientComponent {
       sidenav.close();
     }
   }
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthService) {
     this.page = this.router.url;
   }
 
@@ -34,8 +35,12 @@ export class PatientComponent {
     this.router.navigateByUrl(selectedPage);
   }
 
-  logout() {
-    this.changePage("/login")
+  onLogout() {
+    this.authService.logout().then(() => {
+      this.changePage("/login");
+    }). catch(error => {
+      console.error(error);
+    })
   }
 
 }
