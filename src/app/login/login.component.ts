@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.email.value, this.password.value).then(cred => {
         //console.log(cred);
         this.loading = false;
-        this.router.navigateByUrl('/patient');
+        this.router.navigateByUrl('/patient').then(() => {
+          window.location.reload();
+          });
       }).catch(error => {
         console.error(error, this.email.hasError("required"), this.password.hasError("required"));
         this.isInvalidEmailOrPassword = true;
