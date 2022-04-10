@@ -12,12 +12,14 @@ export class LoginGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const user = JSON.parse(localStorage.getItem('user') as string);
-      if(user == null) {
-        return true;
+      console.log(this.authService.isLoggedIn)
+      if(this.authService.isLoggedIn) {
+        console.error("Elérés megtagadva!");
+        this.router.navigateByUrl("/patient/history");
+        return false;
+        
       }
-      this.router.navigateByUrl("/patient");
-      return false;
+      return true;
   }
   
 }
