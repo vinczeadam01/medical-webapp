@@ -32,12 +32,14 @@ export class PatientComponent {
   }
 
   changePage(selectedPage: string) {
-    this.router.navigateByUrl(selectedPage);
+    return this.router.navigateByUrl(selectedPage);
   }
 
   async onLogout() {
     this.authService.logout().then(() => {
-      this.changePage("/login");
+      this.changePage("/login").then(() => {
+        window.location.reload();
+        });
     }). catch(error => {
       console.error(error);
     })
