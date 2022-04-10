@@ -10,10 +10,16 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { ResultsComponent } from './pages/results/results.component';
+import { PatientsComponent } from './pages/patients/patients.component';
+import { MessageComponent } from './pages/message/message.component';
 
 @NgModule({
   declarations: [
-    DoctorComponent
+    DoctorComponent,
+    ResultsComponent,
+    PatientsComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,

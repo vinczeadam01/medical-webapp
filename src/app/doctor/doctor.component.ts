@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 export class DoctorComponent {
 
   links = [
-    {name: "Eredmények", icon: "table_rows", url: "/doctor/table"},
+    {name: "Eredmények", icon: "table_rows", url: "/doctor/results"},
     {name: "Beteglista", icon: "person", url: "/doctor/patients"},
-    {name: "Beállítások", icon: "settings", url: "/settings"}
+    {name: "Üzenetek", icon: "mail", url: "/doctor/message"}
   ];
   page = "/doctor/patients";
 
@@ -33,7 +33,7 @@ export class DoctorComponent {
     this.router.navigateByUrl(selectedPage);
   }
 
-  logout() {
+  onLogout() {
     this.changePage("/login");
   }
 
