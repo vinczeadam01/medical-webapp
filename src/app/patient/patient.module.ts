@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AnalitycsComponent } from './pages/analitycs/analitycs.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { MatInputModule } from '@angular/material/input';
     PatientComponent,
     HistoryComponent,
     AddComponent,
-    MessageComponent
+    MessageComponent,
+    AnalitycsComponent
   ],
   imports: [
     CommonModule,

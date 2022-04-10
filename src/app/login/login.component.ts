@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   email = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
-  radio = new FormControl('');
+  patient: boolean = true;
 
   isInvalidEmailOrPassword = false;
 
@@ -24,7 +24,30 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async login() {
+  switchDoctor(event: string) {
+    if(event === "patient") {
+      this.patient = true;
+    }
+    else {
+      this.patient = false;
+    }
+  }
+
+  login() {
+    
+    if(this.patient) {
+      this.loginAsPatient();
+    }
+    else {
+      this.loginAsDoctor();
+    }
+  }
+
+  loginAsDoctor() {
+    this.router.navigateByUrl("/doctor");
+  }
+
+  async loginAsPatient() {
     if (!this.email.hasError("required") && !this.password.hasError("required")) {
       this.isInvalidEmailOrPassword = false;
       this.loading = true;

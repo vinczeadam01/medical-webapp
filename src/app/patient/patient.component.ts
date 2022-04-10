@@ -14,6 +14,7 @@ export class PatientComponent {
     {name: "Előzmények", icon: "table_rows", url: "/patient/history"},
     {name: "Mérés hozzáadása", icon: "add", url: "/patient/add"},
     {name: "Üzenet", icon: "email", url: "/patient/message"},
+    {name: "Elemzések", icon: "analytics", url: "/patient/analytics"},
     {name: "Beállítások", icon: "settings", url: "/patient/settings"},
   ];
   page = "/doctor/patients";

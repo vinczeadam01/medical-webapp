@@ -12,7 +12,7 @@ export class LoginGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log(this.authService.isLoggedIn)
+      //console.log(this.authService.isLoggedIn)
       if(this.authService.isLoggedIn) {
         console.error("Elérés megtagadva!");
         this.router.navigateByUrl("/patient/history");

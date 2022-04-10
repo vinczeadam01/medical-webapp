@@ -8,7 +8,7 @@ import { AuthService } from './shared/services/auth.service';
 })
 export class AppComponent {
   title = 'medical';
-  loggedInUser?: firebase.default.User | null;
+  //loggedInUser?: firebase.default.User | null;
 
   constructor(private authService: AuthService) {}
 
