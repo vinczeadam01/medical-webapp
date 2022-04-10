@@ -13,6 +13,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ResultsComponent } from './pages/results/results.component';
 import { PatientsComponent } from './pages/patients/patients.component';
 import { MessageComponent } from './pages/message/message.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { MessageComponent } from './pages/message/message.component';
     MatSidenavModule,
     FlexLayoutModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule
   ]
 })
 export class DoctorModule { }
