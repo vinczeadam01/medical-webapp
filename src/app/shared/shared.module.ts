@@ -11,11 +11,12 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { SendmessageComponent } from './sendmessage/sendmessage.component';
 
 
 
 @NgModule({
-  declarations: [MenuComponent, MesurementTableComponent, DialogOverviewExampleDialog],
+  declarations: [MenuComponent, MesurementTableComponent, DialogOverviewExampleDialog, SendmessageComponent],
   imports: [
     CommonModule,
     MatListModule,
@@ -27,6 +28,6 @@ import { MatInputModule } from '@angular/material/input';
     MatButtonModule,
     MatInputModule
   ],
-  exports: [MenuComponent, MesurementTableComponent]
+  exports: [MenuComponent, MesurementTableComponent, SendmessageComponent]
 })
 export class SharedModule { }
