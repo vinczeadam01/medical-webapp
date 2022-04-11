@@ -9,3 +9,16 @@ table {
 .demo-button+.demo-button {
     margin-left: 8px;
 }
+
+.new-message-form {
+    text-align: center;
+}
+
+.new-message-form mat-form-field {
+    width: 70%;
+    margin: auto;
+}
+
+#beerkezettUzenetek {
+    text-align: center;
+}

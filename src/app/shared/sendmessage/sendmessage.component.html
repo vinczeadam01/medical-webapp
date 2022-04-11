@@ -1,3 +1,19 @@
+<div class="new-message-form">
+  <h2>Új üzenet küldése</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Címzett</mat-label>
+    <mat-select>
+      <mat-option value="one">First option</mat-option>
+      <mat-option value="two">Second option</mat-option>
+    </mat-select>
+  </mat-form-field>  
+
+  <mat-form-field appearance="outline">
+    <mat-label>Üzenet</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+</div>
+<h2 id="beerkezettUzenetek">Beérkezett üzenetek</h2>
 <div class="demo-button-container">
     <button mat-raised-button (click)="addData()" class="demo-button">
       Add data
