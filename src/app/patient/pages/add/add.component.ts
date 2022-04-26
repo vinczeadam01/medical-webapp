@@ -38,12 +38,23 @@ export class AddComponent implements OnInit {
       date: this.date.value + " " + this.time.value,
       sys: this.sys.value,
       dia: this.dia.value,
-      feel: this.feel.value
+      feel: this.feel.value,
+      rate: this.calcRate(this.sys.value, this.dia.value)
     }
     console.log(measure);
     
 
     this.measureService.create(measure);
+  }
+
+  calcRate(sys: number, dia: number): number {
+    if(sys < 90 && dia < 60)
+      return 0;
+    if(sys < 120 && dia < 80)
+      return 1;
+    if(sys < 140 && dia < 90)
+      return 2;
+    return 3;
   }
 
 }

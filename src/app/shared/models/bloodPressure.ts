@@ -4,5 +4,6 @@ export interface BloodPressure {
     sys: number;
     dia: number;
     feel: number;
-    date: String;
+    date: string;
+    rate: number
 }
