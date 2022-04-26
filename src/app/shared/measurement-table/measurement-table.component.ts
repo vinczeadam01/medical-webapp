@@ -4,11 +4,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BloodPressure } from '../models/bloodPressure';
 
 @Component({
-  selector: 'app-mesurement-table',
-  templateUrl: './mesurement-table.component.html',
-  styleUrls: ['./mesurement-table.component.scss']
+  selector: 'app-measurement-table',
+  templateUrl: './measurement-table.component.html',
+  styleUrls: ['./measurement-table.component.scss']
 })
-export class MesurementTableComponent implements OnInit {
+export class measurementTableComponent implements OnInit {
 
   TABLE_DATA: BloodPressure[] = [
     {id: 1, sys: 124, dia: 92, date: "2022-04-06 12:00", feel: 5},

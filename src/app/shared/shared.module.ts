@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
-import { DialogOverviewExampleDialog, MesurementTableComponent } from './mesurement-table/mesurement-table.component';
+import { DialogOverviewExampleDialog, measurementTableComponent } from './measurement-table/measurement-table.component';
 
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
@@ -17,7 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
-  declarations: [MenuComponent, MesurementTableComponent, DialogOverviewExampleDialog, SendmessageComponent],
+  declarations: [MenuComponent, measurementTableComponent, DialogOverviewExampleDialog, SendmessageComponent],
   imports: [
     CommonModule,
     MatListModule,
@@ -30,6 +30,6 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatSelectModule
   ],
-  exports: [MenuComponent, MesurementTableComponent, SendmessageComponent]
+  exports: [MenuComponent, measurementTableComponent, SendmessageComponent]
 })
 export class SharedModule { }
