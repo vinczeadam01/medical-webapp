@@ -1,12 +1,13 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatTable } from '@angular/material/table';
+import { Doctor } from '../models/doctor';
 import { Message } from '../models/message';
+import { Patient } from '../models/patient';
+import { DoctorService } from '../services/doctor.service';
+import { MessageService } from '../services/message.service';
+import { PatientService } from '../services/patient.service';
 
-const MESSAGES_DATA: Message[] = [
-  {from: 'doctor1', to: 'vinczeadam', date: "2022-03-21", message: 'Kedves Ádám! Pihenjen sokat!'},
-  {from: 'doctor1', to: 'vinczeadam', date: "2022-03-21", message: 'Kedves Ádám! Pihenjen sokat!'},
-  {from: 'doctor1', to: 'vinczeadam', date: "2022-03-21", message: 'Kedves Ádám! Pihenjen sokat!'}
-]
 
 @Component({
   selector: 'app-sendmessage',
@@ -16,29 +17,63 @@ const MESSAGES_DATA: Message[] = [
 export class SendmessageComponent implements OnInit {
 
 
-  //@Input() from?: string;
-  //@Input() to?: string;
+  @Input() userId?: string;
+  @Input() role?: string;
+
+  //FORM
+  contacts: Doctor[] | Patient[] = [];
+  message = new FormControl('');
+  to = new FormControl('');
   
-
+  // TABLE
   displayedColumns: string[] = ['from', 'to', 'date', 'message'];
-  dataSource = [...MESSAGES_DATA];
-
-  ngOnInit(): void {
-  }
+  dataSource:Message[] = [];
 
   @ViewChild(MatTable) table?: MatTable<Message>;
 
-  addData() {
-    const randomElementIndex = Math.floor(Math.random() * MESSAGES_DATA.length);
-    this.dataSource.push(MESSAGES_DATA[randomElementIndex]);
-    if(this.table)
-      this.table.renderRows();
+  constructor(private messageService: MessageService, private doctorService: DoctorService, private patientService: PatientService) {}
+
+  ngOnInit(): void {
+
+    //Contacts list init
+    if(this.role === "patient") {
+      this.doctorService.getAll().subscribe(users => {
+        for(const user of users) {
+          this.contacts.push(user);
+        }
+      });
+    }
+    else {
+      this.patientService.getAll().subscribe(users => {
+        for(const user of users) {
+          this.contacts.push(user);
+        }
+      });
+    }
+
+    //Inbox init
+    this.messageService.getReceivedByUserId(this.userId as string).subscribe(messages => {
+      for(const message of messages) {
+        this.dataSource.push(message);
+      }
+
+      if(this.table) {
+        this.table.renderRows();
+      }
+    });
   }
 
-  removeData() {
-    this.dataSource.pop();
-    if(this.table)
-      this.table.renderRows();
+  send(): void {
+    const message: Message = {
+      id: "",
+      from: this.userId as string,
+      to: this.to.value,
+      message: this.message.value,
+      date: "2022-01-01"
+    }
+    this.messageService.create(message);
   }
+  
+
 
 }

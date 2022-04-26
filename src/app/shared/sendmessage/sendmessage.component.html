@@ -2,31 +2,21 @@
   <h2>Új üzenet küldése</h2>
   <mat-form-field appearance="outline">
     <mat-label>Címzett</mat-label>
-    <mat-select>
-      <mat-option value="one">First option</mat-option>
-      <mat-option value="two">Second option</mat-option>
+    <mat-select [formControl]="to" >
+      <mat-option *ngFor="let contact of contacts" [value]="contact.id">{{contact.lastname}} {{contact.firstname}}</mat-option>
     </mat-select>
   </mat-form-field>  
 
   <mat-form-field appearance="outline">
     <mat-label>Üzenet</mat-label>
-    <textarea matInput></textarea>
+    <textarea matInput [formControl]="message"></textarea>
   </mat-form-field>
+
+  <br/>
+  <button mat-raised-button color="primary" (click)="send()">Küldés</button>
 </div>
-<h2 id="beerkezettUzenetek">Beérkezett üzenetek</h2>
-<div class="demo-button-container">
-    <button mat-raised-button (click)="addData()" class="demo-button">
-      Add data
-    </button>
-    <button
-        mat-raised-button
-        [disabled]="!dataSource.length"
-        (click)="removeData()"
-        class="demo-button">
-      Remove data
-    </button>
-  </div>
-  
+
+<h2 id="beerkezettUzenetek">Beérkezett üzenetek</h2>  
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
     <!-- From Column -->
     <ng-container matColumnDef="from">

@@ -22,10 +22,7 @@ export class HistoryComponent implements OnInit {
       for(let data of datas) {
           this.measurementsData?.push(data);
       }
-    });
-
-    console.log(this.measurementsData);
-    
+    });   
     
   }
 

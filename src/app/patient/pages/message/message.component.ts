@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Patient } from 'src/app/shared/models/patient';
 
 @Component({
   selector: 'app-message',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageComponent implements OnInit {
 
-  constructor() { }
+  patient: Patient;
+
+  constructor() {
+    this.patient = JSON.parse(localStorage.getItem('patient') as string); 
+  }
 
   ngOnInit(): void {
   }
