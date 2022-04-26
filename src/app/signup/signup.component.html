@@ -8,9 +8,9 @@
                 <div class="card-content">
                     <!--Choose patient or doctor-->
                     <div class="radio-div">
-                        <mat-radio-group aria-label="Válasszon egy lehetőséget!">
-                            <mat-radio-button value="patient" checked="checked">Beteg</mat-radio-button>
-                            <mat-radio-button value="doctor">Orvos</mat-radio-button>
+                        <mat-radio-group [formControl]="radio" aria-label="Válasszon egy lehetőséget!">
+                            <mat-radio-button value="patient" [checked]="true">Beteg</mat-radio-button>
+                            <mat-radio-button value="doctor" >Orvos</mat-radio-button>
                         </mat-radio-group>
                     </div>
                     <!--Input fields-->
@@ -34,7 +34,7 @@
 
                     <mat-form-field>
                         <span matPrefix class="prefix"><mat-icon>badge</mat-icon></span>
-                        <mat-label for="taj">TAJ-szám: </mat-label><input matInput type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" placeholder="123-456-789"
+                        <mat-label for="taj">TAJ-szám: </mat-label><input matInput pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" placeholder="123-456-789"
                             [formControl]="taj" />
                     </mat-form-field>
 

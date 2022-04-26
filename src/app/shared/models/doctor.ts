@@ -1,6 +1,4 @@
-import { BloodPressure } from "./bloodPressure";
-
-export class Patient {
+export class Doctor {
     id: string;
     firstname: string;
     lastname: string;
