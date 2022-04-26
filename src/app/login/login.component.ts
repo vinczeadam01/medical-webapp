@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
     this.patientService.getById(id).subscribe(patient => {
       localStorage.setItem('patient', JSON.stringify(patient));
     });
+    
     this.router.navigateByUrl("/patient");
   }
 

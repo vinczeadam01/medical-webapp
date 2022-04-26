@@ -1,7 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { BloodPressure } from '../models/bloodPressure';
+import { MeasureService } from '../services/measure.service';
 
 @Component({
   selector: 'app-measurement-table',
@@ -10,20 +11,30 @@ import { BloodPressure } from '../models/bloodPressure';
 })
 export class measurementTableComponent implements OnInit {
 
-  TABLE_DATA: BloodPressure[] = [
-    {id: 1, sys: 124, dia: 92, date: "2022-04-06 12:00", feel: 5},
-    {id: 2, sys: 124, dia: 92, date: "2022-04-06 12:00", feel: 5},
-    {id: 3, sys: 124, dia: 92, date: "2022-04-06 12:00", feel: 5},
-  
-  ];
+  @Input() id?: String;
 
   displayedColumns: string[] = ['date', 'sys', 'dia', 'feel', 'action'];
-  dataSource = new MatTableDataSource(this.TABLE_DATA);
+  dataSource: BloodPressure[] = []
 
-  constructor(public dialog: MatDialog) { }
+  @ViewChild(MatTable) table?: MatTable<BloodPressure>;
+
+  constructor(public dialog: MatDialog, private measureService: MeasureService) {}
+
 
   ngOnInit(): void {
+    if(this.id) {
+      this.measureService.getByUserId(this.id as string).subscribe(datas => {
+        for(const data of datas) {
+          this.dataSource.push(data);
+        }
+        if(this.table)
+        this.table.renderRows();
+      });  
+    }
+
   }
+
+
 
 
   openDialog(actione: string, dataBloodPressure: BloodPressure): void {
@@ -31,7 +42,7 @@ export class measurementTableComponent implements OnInit {
       data: { data: dataBloodPressure, action: actione },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(_ => {
       console.log('The dialog was closed');
     });
   }

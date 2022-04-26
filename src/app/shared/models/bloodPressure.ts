@@ -1,5 +1,6 @@
 export interface BloodPressure {
-    id: number;
+    id: string;
+    uid: string;
     sys: number;
     dia: number;
     feel: number;
