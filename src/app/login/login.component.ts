@@ -64,6 +64,11 @@ export class LoginComponent implements OnInit {
 
   loginAsDoctor(id: string) {
     this.doctorService.getById(id).subscribe(doctor => {
+      if(doctor == undefined) {
+        console.error("Ez a fiók betegként van regisztrálva");
+        return;
+      }
+      
       localStorage.setItem('doctor', JSON.stringify(doctor));
     });
     this.router.navigateByUrl("/doctor");

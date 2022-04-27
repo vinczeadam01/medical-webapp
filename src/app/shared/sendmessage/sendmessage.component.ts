@@ -21,7 +21,7 @@ export class SendmessageComponent implements OnInit {
   @Input() role?: string;
 
   //FORM
-  contacts: Doctor[] | Patient[] = [];
+  contacts: any[] = [];
   message = new FormControl('');
   to = new FormControl('');
   

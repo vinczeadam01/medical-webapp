@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { Patient } from 'src/app/shared/models/patient';
+import { PatientService } from 'src/app/shared/services/patient.service';
 
 @Component({
   selector: 'app-results',
@@ -9,21 +9,18 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit {
-  myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions?: Observable<string[]>;
+  patientId = new FormControl();
+  patients: Patient[] = [];
+
+  constructor(private patientService: PatientService) {}
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value)),
-    );
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    this.patientService.getAll().forEach(patients => {
+      this.patients = [];
+      for(const patient of patients) {
+        this.patients.push(patient)
+      }
+    });
   }
 
 }

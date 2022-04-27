@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NumberValueAccessor } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Doctor } from '../shared/models/doctor';
 import { Patient } from '../shared/models/patient';
 import { AuthService } from '../shared/services/auth.service';
 import { DoctorService } from '../shared/services/doctor.service';
@@ -39,14 +40,17 @@ export class SignupComponent implements OnInit {
       this.isPasswordsNotMatch = false;
       this.emailIsAlreadyExists = false;
       this.authService.signup(this.email.value, this.password.value).then(cred => {
-        console.log(cred);
+        //console.log(cred);
         localStorage.setItem('user', JSON.stringify(cred));
-        console.log(this.radio.value);
         
         if(this.radio.value != "doctor") {
-          this.registerPatient(cred.user?.uid as string)
+          this.registerPatient(cred.user?.uid as string);
+          this.router.navigateByUrl('/patient');
         }
-        this.router.navigateByUrl('/patient');
+        else {
+          this.registerDoctor(cred.user?.uid as string);
+          this.router.navigateByUrl('/doctor');
+        }
         this.loading = false;
       }).catch(error => {
         console.error(error.code);
@@ -60,6 +64,17 @@ export class SignupComponent implements OnInit {
       this.isPasswordsNotMatch = true;
     }
     
+  }
+  registerDoctor(id: string) {
+    const tmp: Doctor = {
+      id: id,
+      firstname: this.firstname.value, 
+      lastname: this.lastname.value,
+      email: this.email.value,
+    }
+    this.doctorService.create(tmp).catch(error => {
+      console.log(error);
+    });
   }
 
   registerPatient(id: string) {

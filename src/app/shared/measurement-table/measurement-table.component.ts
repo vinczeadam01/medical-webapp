@@ -9,7 +9,7 @@ import { MeasureService } from '../services/measure.service';
   templateUrl: './measurement-table.component.html',
   styleUrls: ['./measurement-table.component.scss']
 })
-export class measurementTableComponent implements OnInit {
+export class measurementTableComponent implements OnInit, OnChanges {
 
   @Input() id?: String;
 
@@ -19,12 +19,20 @@ export class measurementTableComponent implements OnInit {
   @ViewChild(MatTable) table?: MatTable<BloodPressure>;
 
   constructor(public dialog: MatDialog, private measureService: MeasureService) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    this.buildTable();
+  }
 
 
   ngOnInit(): void {
     this.dataSource = []
+    this.buildTable();
+  }
+
+  buildTable(): void {
     if(this.id) {
       this.measureService.getByUserId(this.id as string).subscribe(datas => {
+        this.dataSource=[]
         for(const data of datas) {
           this.dataSource.push(data);
           console.log(data);
@@ -34,7 +42,6 @@ export class measurementTableComponent implements OnInit {
         this.table.renderRows();
       });  
     }
-
   }
 
 
