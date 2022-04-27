@@ -4,7 +4,7 @@
   </mat-dialog-content>
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Nem</button>
-    <button mat-button color="primary" [mat-dialog-close] cdkFocusInitial>Igen</button>
+    <button mat-button color="primary" (click)="onDelete()" [mat-dialog-close] cdkFocusInitial>Igen</button>
   </div>
 </div>
 
@@ -13,23 +13,23 @@
   <div mat-dialog-content>
     <mat-form-field appearance="fill">
       <mat-label>Dátum</mat-label>
-      <input matInput [value]="data.data.date">
+      <input matInput [(ngModel)]="data.data.date">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>SYS</mat-label>
-      <input matInput [value]="data.data.sys">
+      <input matInput [(ngModel)]="data.data.sys">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>DIA</mat-label>
-      <input matInput [value]="data.data.dia">
+      <input matInput [(ngModel)]="data.data.dia">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Közérzet</mat-label>
-      <input matInput [value]="data.data.feel">
+      <input matInput [(ngModel)]="data.data.feel">
     </mat-form-field>
   </div>
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Mégse</button>
-    <button mat-button color="primary" [mat-dialog-close] cdkFocusInitial>Mentés</button>
+    <button mat-button color="primary" [mat-dialog-close] (click)="onSave()" cdkFocusInitial>Mentés</button>
   </div>
 </div>

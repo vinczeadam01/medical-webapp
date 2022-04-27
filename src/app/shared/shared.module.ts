@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { SendmessageComponent } from './sendmessage/sendmessage.component';
 import { MatSelectModule } from '@angular/material/select';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -30,7 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatInputModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [MenuComponent, measurementTableComponent, SendmessageComponent]
 })

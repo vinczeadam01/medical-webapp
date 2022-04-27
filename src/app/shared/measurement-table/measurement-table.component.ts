@@ -1,4 +1,5 @@
 import { Component, Inject, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { BloodPressure } from '../models/bloodPressure';
@@ -34,9 +35,7 @@ export class measurementTableComponent implements OnInit, OnChanges {
       this.measureService.getByUserId(this.id as string).subscribe(datas => {
         this.dataSource=[]
         for(const data of datas) {
-          this.dataSource.push(data);
-          console.log(data);
-          
+          this.dataSource.push(data);          
         }
         if(this.table)
         this.table.renderRows();
@@ -53,7 +52,8 @@ export class measurementTableComponent implements OnInit, OnChanges {
     });
 
     dialogRef.afterClosed().subscribe(_ => {
-      console.log('The dialog was closed');
+      //console.log('The dialog was closed');
+      this.buildTable();
     });
   }
 }
@@ -67,10 +67,24 @@ export class DialogOverviewExampleDialog {
 
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: { data: BloodPressure, action: string }
+    @Inject(MAT_DIALOG_DATA) public data: { data: BloodPressure, action: string },
+    private measureService: MeasureService
   ) {}
+
+  uDate: String = "";
+  uDia: String = "";
+  uSys: String = "";
+  uFeel: String = "";
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  onSave(): void {
+    this.measureService.update(this.data.data);
+  }
+
+  onDelete(): void {
+    this.measureService.delete(this.data.data.id);
   }
 }
