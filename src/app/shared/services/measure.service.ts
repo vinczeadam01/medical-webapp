@@ -21,7 +21,7 @@ export class MeasureService {
   }
 
   getByUserId(userId: string) {
-    return this.afs.collection<BloodPressure>(this.collectionName, ref => ref.where('uid', '==', userId).orderBy('date', 'asc')).valueChanges();
+    return this.afs.collection<BloodPressure>(this.collectionName, ref => ref.where('uid', '==', userId).orderBy('date', 'desc')).valueChanges();
   }
 
   update(bloodPressure: BloodPressure) {

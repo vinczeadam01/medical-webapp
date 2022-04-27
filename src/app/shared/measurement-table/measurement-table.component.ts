@@ -22,10 +22,13 @@ export class measurementTableComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.dataSource = []
     if(this.id) {
       this.measureService.getByUserId(this.id as string).subscribe(datas => {
         for(const data of datas) {
           this.dataSource.push(data);
+          console.log(data);
+          
         }
         if(this.table)
         this.table.renderRows();

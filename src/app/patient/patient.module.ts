@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AnalitycsComponent } from './pages/analitycs/analitycs.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { AnalitycsComponent } from './pages/analitycs/analitycs.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    NgChartsModule
   ]
 })
 export class PatientModule { }

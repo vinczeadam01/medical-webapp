@@ -38,9 +38,8 @@ export class PatientComponent {
 
   async onLogout() {
     this.authService.logout().then(() => {
-      this.changePage("/login").then(() => {
-        window.location.reload();
-        });
+      localStorage.setItem('user', "null");
+      this.changePage("/login");
     }). catch(error => {
       console.error(error);
     })
