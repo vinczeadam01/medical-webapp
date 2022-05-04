@@ -40,7 +40,7 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <p class="login-error-message" *ngIf="isInvalidEmailOrPassword">Hibás email vagy jelszó!</p>
+                <p class="login-error-message" >{{errorMessage}}</p>
             </mat-card-content>
             <mat-card-actions>
                 <!--Buttons-->

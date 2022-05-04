@@ -10,20 +10,14 @@ import { MeasureService } from 'src/app/shared/services/measure.service';
 })
 export class HistoryComponent implements OnInit {
 
-  measurementsData: BloodPressure[] =[]
   patient: Patient;
 
   constructor(private measureService: MeasureService) {
     this.patient = JSON.parse(localStorage.getItem('patient') as string);
+    console.log(this.patient.id);
    }
 
   ngOnInit(): void {
-    this.measureService.getByUserId(this.patient.id).subscribe(datas => {
-      for(let data of datas) {
-          this.measurementsData?.push(data);
-      }
-    });   
-    
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { Doctor } from '../shared/models/doctor';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { AuthService } from '../shared/services/auth.service';
   styleUrls: ['./doctor.component.scss']
 })
 export class DoctorComponent {
+
+  doctor: Doctor;
 
   links = [
     {name: "Eredmények", icon: "table_rows", url: "/doctor/results"},
@@ -28,6 +31,9 @@ export class DoctorComponent {
   }
   constructor(private router: Router, private authService: AuthService) {
     this.page = this.router.url;
+    this.doctor = JSON.parse(localStorage.getItem('doctor') as string);
+    console.log(this.doctor);
+    
   }
 
   changePage(selectedPage: string) {
@@ -36,8 +42,7 @@ export class DoctorComponent {
 
   async onLogout() {
     this.authService.logout().then(() => {
-      localStorage.setItem('user', "null");
-      localStorage.setItem('doctor', "null");
+      localStorage.clear();
       this.changePage("/login");
     }). catch(error => {
       console.error(error);

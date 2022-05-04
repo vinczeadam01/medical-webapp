@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   patient: boolean = true;
 
   isInvalidEmailOrPassword = false;
+  errorMessage: string = "";
 
 
   loading: boolean = false;
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit {
   login() {
     if (!this.email.hasError("required") && !this.password.hasError("required")) {
       this.isInvalidEmailOrPassword = false;
+      this.errorMessage = "";
       this.loading = true;
       this.authService.login(this.email.value, this.password.value).then(cred => {
         localStorage.setItem('user', JSON.stringify(cred));
@@ -52,35 +54,49 @@ export class LoginComponent implements OnInit {
           this.loginAsPatient(cred.user?.uid as string);
         }
         else {
-          this.loginAsDoctor(cred.user?.uid as string);
+          this.loginAsDoctor(cred.user?.uid as string, cred);
         }
       }).catch(error => {
         console.error(error, this.email.hasError("required"), this.password.hasError("required"));
         this.isInvalidEmailOrPassword = true;
+        this.errorMessage = "Hibás email vagy jelszó!";
         this.loading = false;
       });
     }
   }
 
-  loginAsDoctor(id: string) {
+  loginAsDoctor(id: string, cred: any) {
     this.doctorService.getById(id).subscribe(doctor => {
       if(doctor == undefined) {
         console.error("Ez a fiók betegként van regisztrálva");
-        return;
+        this.errorMessage = "Ez a fiók betegként van regisztrálva!"
+        this.loading = false;
       }
-      
-      localStorage.setItem('doctor', JSON.stringify(doctor));
+      else {
+        localStorage.setItem('doctor', JSON.stringify(doctor));
+        this.router.navigateByUrl("/doctor");
+        
+      }
     });
-    this.router.navigateByUrl("/doctor");
+    
   }
 
   loginAsPatient(id: string) { 
     this.patientService.getById(id).subscribe(patient => {
-      localStorage.setItem('patient', JSON.stringify(patient));
+      if(patient == undefined) {
+        console.error("Ez a fiók orvosként van regisztrálva");
+        this.errorMessage = "Ez a fiók orvosként van regisztrálva!"
+        this.loading = false;
+      }
+      else {
+        localStorage.setItem('patient', JSON.stringify(patient));
+        this.router.navigateByUrl("/patient");
+        
+      }
     });
     
-    this.router.navigateByUrl("/patient");
   }
+
 
 
 

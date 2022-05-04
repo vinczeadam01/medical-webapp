@@ -42,8 +42,7 @@ export class PatientComponent {
 
   async onLogout() {
     this.authService.logout().then(() => {
-      localStorage.setItem('user', "null");
-      localStorage.setItem('patient', "null");
+      localStorage.clear();
       this.changePage("/login");
     }). catch(error => {
       console.error(error);

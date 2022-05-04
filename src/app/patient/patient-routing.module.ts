@@ -12,7 +12,6 @@ const routes: Routes = [
     { path: 'add', component: AddComponent },
     { path: 'message', component: MessageComponent },
     { path: 'analytics', component: AnalitycsComponent },
-    { path: '', redirectTo: '/patient/history', pathMatch: 'full'},
   ] },
   
 

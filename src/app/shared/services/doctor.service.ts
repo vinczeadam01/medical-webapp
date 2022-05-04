@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Doctor } from '../models/doctor';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class DoctorService {
   }
 
   getById(id: string) {
-    return this.afs.collection<Doctor>(this.collectionName).doc(id).valueChanges();
+    return this.afs.collection<Doctor>(this.collectionName).doc(id).valueChanges().pipe(take(1));
   }
 
   update(doctor: Doctor) {

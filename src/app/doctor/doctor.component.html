@@ -24,6 +24,10 @@
                     <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
+                    <button mat-menu-item disabled>
+                        <mat-icon>account_circle</mat-icon>
+                        <span>{{doctor.lastname}} {{doctor.firstname}}</span>
+                    </button>
                     <button mat-menu-item (click)="onLogout()">
                         <mat-icon>logout</mat-icon>
                         <span>Kijelentkezés</span>

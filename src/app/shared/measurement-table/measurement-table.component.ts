@@ -21,7 +21,11 @@ export class measurementTableComponent implements OnInit, OnChanges {
 
   constructor(public dialog: MatDialog, private measureService: MeasureService) {}
   ngOnChanges(changes: SimpleChanges): void {
-    this.buildTable();
+    if(this.id != null) {
+      this.buildTable();
+      //console.log("onChanges build table");
+      
+    }
   }
 
 
@@ -31,16 +35,17 @@ export class measurementTableComponent implements OnInit, OnChanges {
   }
 
   buildTable(): void {
-    if(this.id) {
-      this.measureService.getByUserId(this.id as string).subscribe(datas => {
-        this.dataSource=[]
-        for(const data of datas) {
-          this.dataSource.push(data);          
-        }
-        if(this.table)
-        this.table.renderRows();
-      });  
-    }
+      if(this.id != null) {
+        this.measureService.getByUserId(this.id as string).subscribe(datas => {
+          this.dataSource=[]
+          for(const data of datas) {
+            this.dataSource.push(data);          
+          }
+          if(this.table != null || this.table)
+          this.table.renderRows();          
+        });  
+      }
+    
   }
 
 
