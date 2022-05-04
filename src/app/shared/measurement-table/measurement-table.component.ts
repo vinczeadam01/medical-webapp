@@ -81,7 +81,18 @@ export class DialogOverviewExampleDialog {
   }
 
   onSave(): void {
+    this.data.data.rate = this.calcRate(this.data.data.sys, this.data.data.dia);
     this.measureService.update(this.data.data);
+  }
+
+  calcRate(sys: number, dia: number): number {
+    if(sys < 90 && dia < 60)
+      return 0;
+    if(sys < 120 && dia < 80)
+      return 1;
+    if(sys < 140 && dia < 90)
+      return 2;
+    return 3;
   }
 
   onDelete(): void {

@@ -76,7 +76,8 @@ export class AnalitycsComponent implements OnInit {
             backgroundColor: "#EDAA98",
             pointRadius: this.pointRadiusValue,
           },
-        ]
+        ],
+        
       };
     });
   }
@@ -84,6 +85,15 @@ export class AnalitycsComponent implements OnInit {
   // scatter
   public scatterChartOptions: ChartConfiguration['options'] = {
     responsive: true,
+    scales: {
+      x: {min: 40, max: 120, title: {text: "DIA [mmHg]", display: true}},
+      y: {min: 70, max: 200, title: {text: "SYS [mmHg]", display: true}},
+    },
+    plugins: {
+      title: {text: "Vérnyomások eloszlása", display: true},
+    },
+    
+    
   };
   
   public scatterChartData?: ChartData<'scatter'>;

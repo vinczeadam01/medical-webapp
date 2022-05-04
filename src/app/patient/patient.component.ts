@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { Patient } from '../shared/models/patient';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
@@ -10,12 +11,14 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class PatientComponent {
 
+  patient: Patient;
+
   links = [
     {name: "Előzmények", icon: "table_rows", url: "/patient/history"},
     {name: "Mérés hozzáadása", icon: "add", url: "/patient/add"},
     {name: "Üzenet", icon: "email", url: "/patient/message"},
     {name: "Elemzések", icon: "analytics", url: "/patient/analytics"},
-    {name: "Beállítások", icon: "settings", url: "/patient/settings"},
+    
   ];
   page = "/doctor/patients";
 
@@ -30,6 +33,7 @@ export class PatientComponent {
   }
   constructor(private router: Router, private authService: AuthService) {
     this.page = this.router.url;
+    this.patient = JSON.parse(localStorage.getItem('patient') as string);
   }
 
   changePage(selectedPage: string) {

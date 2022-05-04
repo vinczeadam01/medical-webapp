@@ -38,6 +38,7 @@ export class SendmessageComponent implements OnInit {
     //Contacts list init
     if(this.role === "patient") {
       this.doctorService.getAll().subscribe(users => {
+        this.contacts = [];
         for(const user of users) {
           this.contacts.push(user);
         }
@@ -45,6 +46,7 @@ export class SendmessageComponent implements OnInit {
     }
     else {
       this.patientService.getAll().subscribe(users => {
+        this.contacts = [];
         for(const user of users) {
           this.contacts.push(user);
         }
@@ -53,6 +55,7 @@ export class SendmessageComponent implements OnInit {
 
     //Inbox init
     this.messageService.getReceivedByUserId(this.userId as string).subscribe(messages => {
+      this.dataSource = [];
       for(const message of messages) {
         this.dataSource.push(message);
       }
