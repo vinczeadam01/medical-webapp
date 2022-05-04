@@ -14,7 +14,7 @@ export class HistoryComponent implements OnInit {
 
   constructor(private measureService: MeasureService) {
     this.patient = JSON.parse(localStorage.getItem('patient') as string);
-    console.log(this.patient.id);
+    //console.log(this.patient.id);
    }
 
   ngOnInit(): void {

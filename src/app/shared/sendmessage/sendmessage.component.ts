@@ -18,12 +18,14 @@ export class SendmessageComponent implements OnInit {
 
 
   @Input() userId?: string;
+  @Input() userName?: string;
   @Input() role?: string;
 
   //FORM
   contacts: any[] = [];
   message = new FormControl('');
   to = new FormControl('');
+  isSendSuccess = false;
   
   // TABLE
   displayedColumns: string[] = ['from', 'to', 'date', 'message'];
@@ -70,11 +72,17 @@ export class SendmessageComponent implements OnInit {
     const message: Message = {
       id: "",
       from: this.userId as string,
-      to: this.to.value,
+      fromName: this.userName as string,
+      to: this.to.value.id,
+      toName: this.to.value.lastname + " " + this.to.value.firstname,
       message: this.message.value,
       date: "2022-01-01"
     }
-    this.messageService.create(message);
+    
+    this.messageService.create(message).then(_ => {
+      this.isSendSuccess = true;
+      this.message.setValue("");
+    })
   }
   
 
