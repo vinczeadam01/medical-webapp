@@ -3,7 +3,7 @@ export interface BloodPressure {
     uid: string;
     sys: number;
     dia: number;
-    feel: number;
+    pulse: number;
     date: string;
     rate: number
 }

@@ -14,7 +14,7 @@ export class measurementTableComponent implements OnInit, OnChanges {
 
   @Input() id?: String;
 
-  displayedColumns: string[] = ['date', 'sys', 'dia', 'feel', 'action'];
+  displayedColumns: string[] = ['date', 'sys', 'dia', 'pulse', 'action'];
   dataSource: BloodPressure[] = []
 
   @ViewChild(MatTable) table?: MatTable<BloodPressure>;
@@ -79,7 +79,7 @@ export class DialogOverviewExampleDialog {
   uDate: String = "";
   uDia: String = "";
   uSys: String = "";
-  uFeel: String = "";
+  upulse: String = "";
 
   onNoClick(): void {
     this.dialogRef.close();
