@@ -14,11 +14,13 @@ import { MatInputModule } from '@angular/material/input';
 import { SendmessageComponent } from './sendmessage/sendmessage.component';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OnlydatePipe } from './pipes/onlydate.pipe';
+import { DateTimePipe } from './pipes/date-time.pipe';
 
 
 
 @NgModule({
-  declarations: [MenuComponent, measurementTableComponent, DialogOverviewExampleDialog, SendmessageComponent],
+  declarations: [MenuComponent, measurementTableComponent, DialogOverviewExampleDialog, SendmessageComponent, OnlydatePipe, DateTimePipe],
   imports: [
     CommonModule,
     MatListModule,

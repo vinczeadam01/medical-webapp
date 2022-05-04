@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Timestamp } from '@angular/fire/firestore';
 import { FormControl } from '@angular/forms';
 import { MatTable } from '@angular/material/table';
 import { Doctor } from '../models/doctor';
@@ -60,6 +61,9 @@ export class SendmessageComponent implements OnInit {
       this.dataSource = [];
       for(const message of messages) {
         this.dataSource.push(message);
+        console.log(message.date.toDate().toISOString());
+        
+        
       }
 
       if(this.table) {
@@ -69,6 +73,7 @@ export class SendmessageComponent implements OnInit {
   }
 
   send(): void {
+    let now = new Date();
     const message: Message = {
       id: "",
       from: this.userId as string,
@@ -76,8 +81,9 @@ export class SendmessageComponent implements OnInit {
       to: this.to.value.id,
       toName: this.to.value.lastname + " " + this.to.value.firstname,
       message: this.message.value,
-      date: "2022-01-01"
+      date: Timestamp.now()
     }
+    
     
     this.messageService.create(message).then(_ => {
       this.isSendSuccess = true;
