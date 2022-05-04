@@ -6,6 +6,6 @@ export interface BloodPressure {
     sys: number;
     dia: number;
     pulse: number;
-    date: string;
+    date: Timestamp;
     rate: number
 }

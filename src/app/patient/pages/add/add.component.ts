@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Timestamp } from '@angular/fire/firestore';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BloodPressure } from 'src/app/shared/models/bloodPressure';
@@ -36,14 +37,12 @@ export class AddComponent implements OnInit {
     const measure: BloodPressure = {
       id: "",
       uid: this.patient.id,
-      date: this.date.value + " " + this.time.value,
+      date: Timestamp.fromDate(new Date(this.date.value+"T"+this.time.value+":00.000+02:00")),
       sys: this.sys.value,
       dia: this.dia.value,
       pulse: this.pulse.value,
       rate: this.calcRate(this.sys.value, this.dia.value)
-    }
-    console.log(measure);
-    
+    }    
 
     this.measureService.create(measure);
     this.router.navigateByUrl("/patient/history")
