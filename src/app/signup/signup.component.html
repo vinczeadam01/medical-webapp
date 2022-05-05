@@ -32,9 +32,9 @@
                             [formControl]="email" />
                     </mat-form-field>
 
-                    <mat-form-field>
+                    <mat-form-field *ngIf="radio.value != 'doctor'">
                         <span matPrefix class="prefix"><mat-icon>badge</mat-icon></span>
-                        <mat-label for="taj">TAJ-szám: </mat-label><input matInput pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" placeholder="123-456-789"
+                        <mat-label for="taj">TAJ-szám: </mat-label><input matInput type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" placeholder="123-456-789"
                             [formControl]="taj" />
                     </mat-form-field>
 
@@ -53,11 +53,13 @@
             </mat-card-content>
             <p class="signup-error-message" *ngIf="isPasswordsNotMatch">A jelszavak nem egyeznek!</p>
             <p class="signup-error-message" *ngIf="emailIsAlreadyExists">Az email már foglalt!</p>
+            <p class="signup-error-message" *ngIf="isWeakPassword">A jelszó túl gyenge!</p>
             <mat-card-actions>
                 <!--Buttons-->
                 <button mat-raised-button color="primary" (click)="onSignup()">Regisztráció</button>
                 <button mat-button [routerLink]="'/login'" >Vissza</button>
             </mat-card-actions>
+            <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
         </mat-card>
         <div class="logo-container"><img src="/assets/images/logo.png" alt="logo"></div>
     </div>

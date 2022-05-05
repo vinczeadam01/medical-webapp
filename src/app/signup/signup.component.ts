@@ -24,6 +24,7 @@ export class SignupComponent implements OnInit {
   loading: boolean = false;
   isPasswordsNotMatch = false;
   emailIsAlreadyExists = false;
+  isWeakPassword = false;
 
   constructor(
     private router: Router, 
@@ -39,17 +40,17 @@ export class SignupComponent implements OnInit {
     if(this.password.value === this.rePassword.value) {
       this.isPasswordsNotMatch = false;
       this.emailIsAlreadyExists = false;
+      this.isWeakPassword = false;
       this.authService.signup(this.email.value, this.password.value).then(cred => {
         //console.log(cred);
         localStorage.setItem('user', JSON.stringify(cred));
         
         if(this.radio.value != "doctor") {
           this.registerPatient(cred.user?.uid as string);
-          this.router.navigateByUrl('/patient');
+          
         }
         else {
           this.registerDoctor(cred.user?.uid as string);
-          this.router.navigateByUrl('/doctor');
         }
         this.loading = false;
       }).catch(error => {
@@ -57,11 +58,15 @@ export class SignupComponent implements OnInit {
         if(error.code === "auth/email-already-in-use") {
           this.emailIsAlreadyExists = true;
         }
+        else if(error.code === "auth/weak-password") {
+          this.isWeakPassword = true;
+        }
         this.loading = false;
       });
     }
     else {
       this.isPasswordsNotMatch = true;
+      this.loading = false;
     }
     
   }
@@ -72,7 +77,11 @@ export class SignupComponent implements OnInit {
       lastname: this.lastname.value,
       email: this.email.value,
     }
-    this.doctorService.create(tmp).catch(error => {
+    this.doctorService.create(tmp).then(_ => {
+      localStorage.setItem('doctor', JSON.stringify(tmp));
+      this.router.navigateByUrl('/doctor');
+    })
+    .catch(error => {
       console.log(error);
     });
   }
@@ -86,7 +95,10 @@ export class SignupComponent implements OnInit {
       taj: this.taj.value
     };
       
-    this.patientService.create(tmp).catch(error => {
+    this.patientService.create(tmp).then(_ => {
+      localStorage.setItem('patient', JSON.stringify(tmp));
+      this.router.navigateByUrl('/patient');
+    }).catch(error => {
           console.log(error);
         });
   }
