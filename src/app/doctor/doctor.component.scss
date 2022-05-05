@@ -38,3 +38,13 @@ mat-sidenav-container {
 .mat-toolbar {
     background-color: rgb(178, 15, 15);
 }
+
+.logo-container {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+.logo-container img {
+    width: 80px;
+}

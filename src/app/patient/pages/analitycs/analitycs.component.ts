@@ -85,6 +85,7 @@ export class AnalitycsComponent implements OnInit {
   // scatter
   public scatterChartOptions: ChartConfiguration['options'] = {
     responsive: true,
+    maintainAspectRatio: false,
     scales: {
       x: {min: 40, max: 120, title: {text: "DIA [mmHg]", display: true}},
       y: {min: 70, max: 200, title: {text: "SYS [mmHg]", display: true}},
