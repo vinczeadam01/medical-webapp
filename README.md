@@ -1,6 +1,6 @@
 # Medical
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3. <br />
 Public URL: https://medical-bc636.web.app/login
 
 ## Development server
